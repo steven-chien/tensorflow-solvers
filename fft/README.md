@@ -3,7 +3,7 @@
 This launches a distributed CG solver on prepared input data.
 
 ## Parameters
-- ```--size Size of vector as power of two.
+- ```--size``` Size of vector as power of two.
 - ```--num_tiles``` Number of tiles the vector is in.
 - ```--num_gpus``` How many GPUs per node, should be same as the number of processes launched on each node.
 - ```--num_reducers``` Number of reducers, at least one. Only the first reducer is used and the rest are idle.
