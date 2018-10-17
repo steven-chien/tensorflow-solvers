@@ -130,16 +130,6 @@ if __name__ == '__main__':
     tf.logging.set_verbosity(tf.logging.INFO)
     num_tasks = int(os.environ['SLURM_NTASKS'])
     num_workers = num_tasks - FLAGS.num_reducers
-#
-#    num_reducers = FLAGS.num_reducers
-#    num_gpus = FLAGS.num_gpus
-#    os.environ['CUDA_VISIBLE_DEVICES'] = str(rank%num_gpus)
-#
-#    tf_hostlist = []
-#    for host in expand_hostlist(os.environ['SLURM_NODELIST']):
-#        for gpu_id in range(num_gpus):
-#            tf_hostlist.append("%s:%d" % (host, 8888+gpu_id))
-#
     rank = int( os.environ['SLURM_PROCID'] )
     if rank < FLAGS.num_reducers:
         job_name = 'reducer'
@@ -147,8 +137,7 @@ if __name__ == '__main__':
     else:
         job_name = 'worker'
         task_index = rank - FLAGS.num_reducers
-#    num_workers = num_tasks - num_reducers
-#
+
     N = int(FLAGS.size)
     num_blocks = int(N/FLAGS.tile_size)
     num_tiles = int((N/FLAGS.tile_size)*(N/FLAGS.tile_size))
