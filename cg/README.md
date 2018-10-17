@@ -5,8 +5,8 @@ This launches a distributed CG solver on prepared input data.
 ## Parameters
 - ```--size``` Size of  matrix A.
 - ```--num_gpus``` How many GPUs per node, should be same as the number of processes launched on each node.
-- ```--num_ps``` How parameter servers. Currently only first is used.
-- ```--num_iters``` How solver iterations.
+- ```--num_reducers``` How reducers. Currently only first is used.
+- ```--iters``` How solver iterations.
 - ```--checkpoint_steps``` Steps between checkpoint. Checkpoint disabled if not set.
 - ```--protocol``` Communication protocol. Default is grpc+verbs.
 
@@ -14,7 +14,7 @@ This launches a distributed CG solver on prepared input data.
 
 ```
 cd data/
-./generate_problem.sh [problem size]
+python generate_sparse.py [problem size] [list of number of workers, separated by comma]
 ```
 A folder with the naming being the problem size will be created with sub-folders 2_workers, 4_workers, 8_workers, 16_workers with A-N.npy, where N is the portion resposible by process N over the total number of workers. delta.npy for initial delta and r.npy for initial residual are saved directly on in the folder without splitting. Global p and r will be initialized on the parameter server/reducer. Local p and r on workers will be initialized by the initialized value of r with respective portion. A is too large to be store in the graph and is initialized through a placeholder locally on workers. The initial solution is all zero and the problem is formulated in such a way that the final solution converges to one period of a sin function.
 
