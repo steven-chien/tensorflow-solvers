@@ -5,8 +5,8 @@ This launches a distributed CG solver on prepared input data.
 ## Parameters
 - ```--size``` Size of  matrix A.
 - ```--num_gpus``` How many GPUs per node, should be same as the number of processes launched on each node.
-- ```--num_reducers``` How reducers. Currently only first is used.
-- ```--iters``` How solver iterations.
+- ```--num_reducers``` How many reducers to use. Currently only first is used.
+- ```--iters``` How many solver iterations.
 - ```--checkpoint_steps``` Steps between checkpoint. Checkpoint disabled if not set.
 - ```--protocol``` Communication protocol. Default is grpc+verbs.
 
