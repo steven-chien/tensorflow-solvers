@@ -22,11 +22,11 @@ A folder with the naming being the problem size will be created with sub-folders
 ```
 salloc --constraint="Haswell" --nodes=3 -t 00:15:00 -A <proj-name> --ntasks-per-node=1 --gres=gpu:K420:1 
 
-srun -n 3 --kill-on-bad-exit=1 --unbuffered python cg.py --size=8192 --num_gpus=1 --num_ps=1 --num_iters=500 --protocol=grpc+verbs --checkpoint_steps=100
+srun -n 3 --kill-on-bad-exit=1 --unbuffered python cg.py --size=8192 --num_gpus=1 --num_reducers=1 --num_iters=500 --protocol=grpc+verbs --checkpoint_steps=100
 
 OR
 
-mpirun -np 3 python -u cg.py --size=8192 --num_gpus=1 --num_ps=1 --num_iters=500 --protocol=grpc+mpi --checkpoint_steps=100
+mpirun -np 3 python -u cg.py --size=8192 --num_gpus=1 --num_reducers=1 --num_iters=500 --protocol=grpc+mpi --checkpoint_steps=100
 ```
 
 The solver requires a number of tasks that is equal to the number of workers + number of ps. For 2 workers, 3 tasks have to be launched and so on. If there are more than one GPU per node the number of GPUs per node can be specified and the value should be the same as --ntasks-per-node so that that specific number of tasks will be launched on each node. Each process will see one assigned GPU. A folder called checkpoint will be used to store checkpoints.
