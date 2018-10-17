@@ -6,7 +6,7 @@ This launches a distributed CG solver on prepared input data.
 - ```--size``` Size of matrices.
 - ```--tile_size``` Size of tiles.
 - ```--num_gpus``` How many GPUs per node, should be same as the number of processes launched on each node.
-- ```--num_reducers``` How reducers, must be at least two. Currently only the first and second are used.
+- ```--num_reducers``` How many reducers to use, must be at least two. Currently only the first and second are used.
 - ```--dequeue_batch_size``` Number of tiles a reducer collects per dequeue, default to 16.
 - ```--num_tests``` Number of tests to repeat.
 - ```--protocol``` Communication protocol. Default is grpc+verbs, optionally grpc, grpc+mpi.
