@@ -1,6 +1,6 @@
-# CG solver
+# Fast Fourier transform
 
-This launches a distributed CG solver on prepared input data.
+This launches a distributed FFT on prepared input vectors.
 
 ## Parameters
 - ```--size``` Size of vector as power of two.
