@@ -1,6 +1,6 @@
-# CG solver
+# Tiled matrix multiplication
 
-This launches a distributed CG solver on prepared input data.
+This launches a distributed matrix multiplication on prepared input matrix tiles.
 
 ## Parameters
 - ```--size``` Size of matrices.
